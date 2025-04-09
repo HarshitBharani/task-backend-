@@ -1,11 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connect from "./connect.js";
 const app = express();
 
 dotenv.config();
 const MONGODB_URL = process.env.MONGODB_URL;
-
+app.use(cors());
 connect(MONGODB_URL);
 app.use(express.json());
 
