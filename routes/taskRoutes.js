@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { userModel } from "../models/userModel.js";
+import { userModel } from "../models/UserModel.js";
 
 const taskRouter = Router();
 taskRouter.get("/", async (req, res) => {

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { z } from "zod";
 import jwt from "jsonwebtoken";
 import bcrypt, { genSalt } from "bcrypt";
-import { userModel } from "../models/userModel.js";
+import { userModel } from "../models/UserModel.js";
 const userRouter = Router();
 
 userRouter.post("/register", async (req, res) => {
@@ -58,13 +58,11 @@ userRouter.post("/login", async (req, res) => {
     }
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
 
-    res
-      .status(200)
-      .json({
-        message: " user logged in succesfully",
-        token: token,
-        tasks: user.tasks,
-      });
+    res.status(200).json({
+      message: " user logged in succesfully",
+      token: token,
+      tasks: user.tasks,
+    });
   } catch (error) {
     console.error("login error", error);
     res.status(500).json({ message: "something went wrong" });
