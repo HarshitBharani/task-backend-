@@ -12,7 +12,7 @@ export default async function authMiddleware(req, res, next) {
       return res.status(403).json({ message: "invalid token", err });
     }
 
-    req.userId = decoded.userId;
+    req.body.userId = decoded.user;
     next();
   });
 }
